@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a clone for Spotify">
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="container">
+        <div id="left">
+            <div id="home">
+                <div id="logo">
+                    <img src="spotify_logo.png" alt="Logo">
+                    <div id="close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+                <a href="#"><i class="fas fa-home"></i> Home</a>
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+            </div>
+            <div id="library">
+                <div id="library-head">
+                    <div id="library-heading"><i class="fa-solid fa-book"></i> Your Library</div>
+                    <div id="library-add-icon"><i class="fa-solid fa-plus"></i></div>
+                </div>
+                <!-- <div class="library-card" id="create-playlist">
+                    <h1>Create your first playlist</h1>
+                    <p>It'll be easy, we'll help you</p>
+                    <button>Create Playlist</button>
+                </div>
+                <div class="library-card" id="find-podcast">
+                    <h1>Let's find some podcasts to follow</h1>
+                    <p>We'll keep you updated on new episodes</p>
+                    <button>Browse Podcasts</button>
+                </div> -->
+                <div id="songs-card">
+                    <ul></ul>
+                </div>
+            </div>
+            <div id="extras">
+                <div id="extra-links">
+                    <a href="#">Legal</a>
+                    <a href="#">Privacy Center</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">About Ads</a>
+                    <a href="#">Accessibility</a>
+                </div>
+                <div id="language">
+                    <button><i class="fa-solid fa-language"></i> English</button>
+                </div>
+                <div id="copyright">
+                    <p>© 2024 Spotify AB</p>
+                </div>
+            </div>
+        </div>
+        <div id="right">
+            <div id="right-head">
+                <div id="navigation-buttons">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+                <div id="hamburger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div id="head-buttons">
+                    <button class="head-button" id="signup">Sign up</button>
+                    <button class="head-button" id="login">Log in</button>
+                </div>
+            </div>
+            <div id="spotify-playlists">
+                <h1>Spotify Playlists</h1>
+                <div id="cards">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist1.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist2.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist3.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist4.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist5.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist6.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist7.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist8.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist9.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="playlist10.jpeg" alt="Playlist">
+                            <div class="playCircle"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="card-data">
+                            <h2>Dinner with Friends</h2>
+                            <p>The perfect soundtrack to those long nights over dinner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="playbar">
+                <div id="playbar-top">
+                    <div id="song-info">
+                        <p></p>
+                    </div>
+                    <div id="controls">
+                        <i id="previous" class="fa-solid fa-backward-step"></i>
+                        <i id="play" class="fa-solid fa-play"></i>
+                        <i id="next" class="fa-solid fa-forward-step"></i>
+                    </div>
+                    <div id="song-time">
+                        <p></p>
+                    </div>
+                </div>
+                <div id="playbar-bottom">
+                    <div id="seekbar">
+                        <div id="seekbarCircle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/cdfe9b316a.js" crossorigin="anonymous"></script>
+</body>
+</html>
