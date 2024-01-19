@@ -42,7 +42,7 @@ function secondsToMinutes(durationInSeconds) {
 
 async function fetchSongs(folder) {
     currentFolder = folder;
-    let x = await fetch(`http://127.0.0.1:5500/${currentFolder}/`);
+    let x = await fetch(`/${currentFolder}/`);
     let response = await x.text();
 
     let div = document.createElement("div");
@@ -62,11 +62,11 @@ async function fetchSongs(folder) {
     for (let song of songs) {
         songsUnorderedList.innerHTML = songsUnorderedList.innerHTML + `<li>
             <div id="song-left">
-                <img src="music3.png" alt="Music">
+                <img src="Images/music3.png" alt="Music">
             </div>
             <div id="song-center">
                 <h3>${decodeURI(song)}</h3>
-                <p>Abhik and Ghostemane</p>
+                <p>${currentFolder.split("/")[1]}</p>
             </div>
             <div id="song-right">
                 <i class="fa-solid fa-play"></i>
@@ -104,7 +104,7 @@ function playMusic(audio, paused) {
 
 // Funtion for fetching albums dynamically
 async function fetchAlbums() {
-    let y = await fetch(`http://127.0.0.1:5500/Songs/`);
+    let y = await fetch(`/Songs/`);
     let response = await y.text();
 
     let div = document.createElement("div");
@@ -119,7 +119,7 @@ async function fetchAlbums() {
         const e = array[i];
         if(e.href.includes("/Songs/")){
             let folder = e.href.split("/").slice(-1)[0];
-            let z = await fetch(`http://127.0.0.1:5500/Songs/${folder}/info.json`);
+            let z = await fetch(`/Songs/${folder}/info.json`);
             let response = await z.json();
             
             cardContainer.innerHTML = cardContainer.innerHTML + `
@@ -141,6 +141,7 @@ async function fetchAlbums() {
     Array.from(document.getElementsByClassName("card")).forEach((e) => {
         e.addEventListener("click", async (item) => {
             songs = await fetchSongs(`Songs/${item.currentTarget.dataset.folder}`);
+            playMusic(songs[0], false);
         });
     });
 }
@@ -198,7 +199,7 @@ async function main() {
         let index = songs.indexOf(currentSongSrc);
         if(index-1 >= 0) {
             songs = await fetchSongs(currentFolder);
-            playMusic(songs[index-1]);
+            playMusic(songs[index-1], false);
         }
     });
 
@@ -209,7 +210,7 @@ async function main() {
         let index = songs.indexOf(currentSongSrc);
         if(index+1 < songs.length) {
             songs = await fetchSongs(currentFolder);
-            playMusic(songs[index+1]);
+            playMusic(songs[index+1], false);
         }
     });
 }

@@ -1,26 +1,26 @@
 @font-face {
     font-family: regular;
-    src: url(./Font_Regular.ttf);
+    src: url(./Fonts/Font_Regular.ttf);
 }
 
 @font-face {
     font-family: heading1;
-    src: url(./Font_Title_Bold.ttf);
+    src: url(./Fonts/Font_Title_Bold.ttf);
 }
 
 @font-face {
     font-family: heading2;
-    src: url(./Font_Title_Normal.ttf);
+    src: url(./Fonts/Font_Title_Normal.ttf);
 }
 
 @font-face {
     font-family: body1;
-    src: url(./Font_Content_Bold.ttf);
+    src: url(./Fonts/Font_Content_Bold.ttf);
 }
 
 @font-face {
     font-family: body2;
-    src: url(./Font_Content_Normal.ttf);
+    src: url(./Fonts/Font_Content_Normal.ttf);
 }
 
 * {
