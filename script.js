@@ -1,12 +1,16 @@
 console.log("Helllo");
 let currentSong = new Audio();
 let songs;
+let currentFolder;
 
 
+// Function for showing and hiding hamburger menu on phones
 function hamburgerMenu() {
     const hamburger = document.querySelector("#hamburger > i");
     const menu = document.querySelector("#left");
     const close = document.querySelector("#close");
+
+    // Changing the style of left element, on click
     hamburger.addEventListener("click", () => {
         menu.style.left = "0%";
     });
@@ -17,24 +21,7 @@ function hamburgerMenu() {
 hamburgerMenu();
 
 
-async function fetchSongs() {
-    let a = await fetch("http://127.0.0.1:5500/songs/");
-    let response = await a.text();
-
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    const anchorTags = div.getElementsByTagName("a");
-
-    let fetchedSongs = [];
-    for (let item of anchorTags) {
-        if (item.href.endsWith(".mp3")) {
-            fetchedSongs.push(item.href.split("/songs/")[1]);
-        }
-    }
-    return fetchedSongs;
-}
-
-
+// Function for converting seconds to minutes
 function secondsToMinutes(durationInSeconds) {
     const minutes = Math.floor(durationInSeconds / 60);
     const seconds = Math.floor(durationInSeconds % 60);
@@ -42,6 +29,8 @@ function secondsToMinutes(durationInSeconds) {
     const formattedMinutes = String(minutes).padStart(2, '0');
     const formattedSeconds = String(seconds).padStart(2, '0');
     let answer = `${formattedMinutes}:${formattedSeconds}`;
+
+    // Condition for not returning NaN
     if(answer == "NaN:NaN"){
         return "00:00";
     }
@@ -51,21 +40,46 @@ function secondsToMinutes(durationInSeconds) {
 }
 
 
+async function fetchSongs(folder) {
+    currentFolder = folder;
+    let a = await fetch(`http://127.0.0.1:5500/${currentFolder}/`);
+    let response = await a.text();
+
+    let div = document.createElement("div");
+    div.innerHTML = response;
+    const anchorTags = div.getElementsByTagName("a");
+
+    let fetchedSongs = [];
+    for (let item of anchorTags) {
+        if (item.href.endsWith(".mp3")) {
+            fetchedSongs.push(item.href.split(`/${currentFolder}/`)[1]);
+        }
+    }
+    return fetchedSongs;
+}
+
+
+// Function for playing the music
 function playMusic(audio, paused) {
-    currentSong.src = "/Songs/" + audio;
+    currentSong.src = `/${currentFolder}/` + audio;
     if(!paused) {
+        // Playing the music
         currentSong.play();
+
+        // Changing play button to pause and vice versa
         document.querySelector("#play").classList.remove("fa-play");
         document.querySelector("#play").classList.add("fa-pause");
     }
+    // Setting time and name of song
     document.querySelector("#song-info > p").innerHTML = decodeURI(audio);
     document.querySelector("#song-time > p").innerHTML = "00:00 / 00:00";
 }
 
 
+// Main Function
 async function main() {
     // Fetch all songs
-    songs = await fetchSongs();
+    songs = await fetchSongs("Songs/Therapy");
     playMusic(songs[0], true);
 
     // Display songs in "Your Library" section
@@ -133,7 +147,6 @@ async function main() {
     previous.addEventListener("click", () => {
         let currentSongSrc = currentSong.src.split("/").slice(-1)[0];
         let index = songs.indexOf(currentSongSrc);
-        console.log(index, songs.length);
         if(index-1 >= 0) {
             playMusic(songs[index-1]);
         }
@@ -144,7 +157,6 @@ async function main() {
     next.addEventListener("click", () => {
         let currentSongSrc = currentSong.src.split("/").slice(-1)[0];
         let index = songs.indexOf(currentSongSrc);
-        console.log(index, songs.length);
         if(index+1 < songs.length) {
             playMusic(songs[index+1]);
         }
