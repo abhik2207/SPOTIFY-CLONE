@@ -615,7 +615,8 @@ html, body {
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: 10%;
+    padding-left: 9.5%;
+    /* background-color: green; */
 }
 
 #song-info > p {
@@ -630,6 +631,7 @@ html, body {
     align-items: center;
     justify-content: center;
     gap: 1vmax;
+    /* background-color: blue; */
 }
 
 #controls > i {
@@ -649,13 +651,61 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 10%;
+    padding-right: 9.5%;
 }
 
 #song-time > p {
     color: #919191;
     font-size: 0.7vmax;
-    margin-left: 2vmax;
+    margin-left: 3vmax;
+}
+
+#volumeIcon {
+    color: #fff;
+    font-size: 1vmax;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#volume {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1vmax;
+}
+
+#volume > input {
+    cursor: grab;
+}
+
+#volume > input:active {
+    cursor: grabbing;
+}
+
+#volume > input[type="range"] {
+    -webkit-appearance: none;
+    width: 6vmax;
+    height: 0.5vmax;
+    background-color: #5a5a5a;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+#volume > input[type="range"]::-webkit-slider-runnable-track {
+    height: 0.5vmax;
+    background-color: #5a5a5a;
+    border-radius: 5px;
+}
+
+#volume > input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1vmax;
+    height: 1vmax;
+    background-color: #1FDF64;
+    border: 2px solid #000;
+    border-radius: 50%;
+    margin-top: calc((0.5vmax - 1vmax) / 2);
 }
 
 #playbar-bottom {
@@ -907,6 +957,33 @@ html, body {
 
     #controls > i:hover {
         color: #1FDF64;
+    }
+
+    #song-time {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        flex-direction: column;
+        gap: 1.25vmax;
+    }
+
+    #volume {
+        gap: 0.5vmax;
+    }
+
+    #volume > input[type="range"] {
+        width: 7.5vmax;
+        height: 0.75vmax;
+    }
+    
+    #volume > input[type="range"]::-webkit-slider-runnable-track {
+        height: 0.75vmax;
+    }
+    
+    #volume > input[type="range"]::-webkit-slider-thumb {
+        width: 1.25vmax;
+        height: 1.25vmax;
+        margin-top: calc((0.75vmax / 1.25vmax) / 2);
     }
     
     #song-time > p {

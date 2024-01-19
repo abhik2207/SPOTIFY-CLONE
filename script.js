@@ -213,5 +213,51 @@ async function main() {
             playMusic(songs[index+1], false);
         }
     });
+
+    // Attach event listener to Volume Slider
+    const volumeSlider = document.querySelector("#volume > input");
+    const volumeIcon1 = document.querySelector("#volumeIcon");
+    volumeSlider.addEventListener("change", (e) => {
+        currentSong.volume = e.target.value / 100;
+        if(e.target.value <= 100 && e.target.value > 50) {
+            volumeIcon1.classList.remove("fa-volume-low");
+            volumeIcon1.classList.remove("fa-volume-off");
+            volumeIcon1.classList.remove("fa-volume-xmark");
+            volumeIcon1.classList.add("fa-volume-high");
+        }
+        else if(e.target.value <= 50 && e.target.value >= 1) {
+            volumeIcon1.classList.remove("fa-volume-high");
+            volumeIcon1.classList.remove("fa-volume-off");
+            volumeIcon1.classList.remove("fa-volume-xmark");
+            volumeIcon1.classList.add("fa-volume-low");
+        }
+        else if(e.target.value == 0) {
+            volumeIcon1.classList.remove("fa-volume-high");
+            volumeIcon1.classList.remove("fa-volume-low");
+            volumeIcon1.classList.remove("fa-volume-xmark");
+            volumeIcon1.classList.add("fa-volume-off");
+        }
+    });
+
+    // Attach event listener to volume button
+    const volumeIcon2 = document.querySelector("#volumeIcon");
+    volumeIcon2.addEventListener("click", (e) => {
+        if(volumeIcon2.classList.contains("fa-volume-off") || volumeIcon2.classList.contains("fa-volume-low") || volumeIcon2.classList.contains("fa-volume-high")){
+            volumeIcon2.classList.remove("fa-volume-off");
+            volumeIcon2.classList.remove("fa-volume-low");
+            volumeIcon2.classList.remove("fa-volume-high");
+            volumeIcon2.classList.add("fa-volume-xmark");
+            currentSong.volume = 0;
+            volumeSlider.value = 0;
+        }
+        else {
+            volumeIcon2.classList.add("fa-volume-low");
+            volumeIcon2.classList.remove("fa-volume-off");
+            volumeIcon2.classList.remove("fa-volume-high");
+            volumeIcon2.classList.remove("fa-volume-xmark");
+            currentSong.volume = 0.1;
+            volumeSlider.value = 10;
+        }
+    });
 }
 main();
